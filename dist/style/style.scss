@@ -13,7 +13,9 @@ body,html{
     width: 100%;
     height: 100%;
 }
-
+body{
+    overflow-x: hidden;
+}
 :root{
     --back_color: hsl(0, 0%, 98%);
     --input_color: hsla(0, 0%, 98%);
@@ -46,7 +48,6 @@ body,html{
     background-size: 100vw;
     background-image: var(--background_image);
     background-color: var(--back_color);
-
     @include flexProparty(center,flex-start,column);
 
     header{

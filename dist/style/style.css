@@ -11,6 +11,10 @@ body, html {
   height: 100%;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 :root {
   --back_color: hsl(0, 0%, 98%);
   --input_color: hsla(0, 0%, 98%);
