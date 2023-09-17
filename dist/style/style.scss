@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Playfair+Display&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,700;1,600&display=swap');
+
+@import "_mixin";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Josefin Sans;
+}
+
+body,html{
+    width: 100%;
+    height: 100%;
+}
+
+:root{
+    --back_color: hsl(0, 0%, 98%);
+    --input_color: hsla(0, 0%, 98%);
+    --font_hover: hsl(235, 19%, 35%);
+    --font_before_hover: hsl(236, 9%, 61%);
+    --checkbox_color: hsl(233, 11%, 84%);
+    --active_button:  hsl(220, 98%, 61%);
+    --background_image: url(/dist/images/bg-desktop-light.jpg);
+    --modeButton_image: url(/dist/images/icon-moon.svg);
+    --mobile_image: url(/dist/images/bg-mobile-light.jpg);
+}
+
+.darkmode{
+    --back_color: hsl(237, 14%, 26%);
+    --input_color: hsl(233, 14%, 35%);
+    --font_hover: hsl(236, 33%, 92%);
+    --font_before_hover: hsl(234, 39%, 85%);
+    --checkbox_color: hsl(233, 11%, 84%);
+    --active_button:  hsl(220, 98%, 61%);
+    --background_image: url(/dist/images/bg-desktop-dark.jpg);
+    --modeButton_image: url(/dist/images/icon-sun.svg);
+    --mobile_image: url(/dist/images/bg-mobile-dark.jpg);
+}
+
+.container{
+    width: 100vw;
+    min-height: 100vh;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 100vw;
+    background-image: var(--background_image);
+    background-color: var(--back_color);
+
+    @include flexProparty(center,flex-start,column);
+
+    header{
+       width: 35vw;
+       margin-top: 5vw;
+       @include flexProparty(center,space-between,row);
+       padding: 2vw 0;
+
+       h1{
+        font-size: 2.5vw;
+        color: hsl(0, 0%, 98%);
+       }
+
+       button{
+        border: 0;
+        width: 2vw;
+        aspect-ratio: 1;
+        background-color: transparent;
+        cursor: pointer;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: var(--modeButton_image);
+       }
+    }
+
+    form{
+        width: 35vw;
+        background-color: var(--input_color);
+        @include flexProparty(center,space-between,row);
+        height: 4vw;
+        border-radius: 5px;
+        padding-left: 1vw;
+
+        .circle{
+            width: 1.5vw;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            border: 1px solid var(--checkbox_color);
+        }
+
+        input{
+            width: 90%;
+            outline: 0;
+            border: 0;
+            height: 100%;
+            font-size: 2vw;
+            border-radius: 5px;
+            background-color: var(--input_color);
+            color: var(--font_hover);
+        }
+
+    }
+
+    .todo-container{
+        margin-top: 2vw;
+        width: 35vw;
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--font_hover);
+
+        .todo-list{
+            width: 100%;
+            
+
+            .todo{
+                width: 100%;
+                @include flexProparty(center,space-between,row);
+                background-color: var(--input_color);
+                color: var(--font_hover);
+                list-style: none;
+                padding: 1vw 1vw;
+                
+
+                &.checked{
+                    .check{
+                        background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+                    }
+
+                    li{
+                        text-decoration: line-through;
+                        opacity: .6;
+                    }
+                }
+
+                &:hover{
+                    .del{
+                        opacity: 1;
+                    }
+
+                    .check{
+                        border-color: var(--font_hover);
+                    }
+                }
+
+                li{
+                    width: 80%;
+                    font-size: 2vw;
+                    color: var(--font_hover); 
+                    overflow-x: auto;
+                }
+
+                .check{
+                    width: 1.5vw;
+                    height: 1.5vw;
+                    border-radius: 50%;
+                    border: 1px solid var(--checkbox_color);
+                    @include flexProparty(center,center,row);
+                    background-color: transparent;
+                    cursor: pointer;
+                    svg{
+                        pointer-events: none;
+                        fill: var(--input_color);
+                    }
+                }
+
+                .del{
+                    background-color: transparent;
+                    width: 1.5vw;
+                    height: 1.5vw;
+                    border: 0;
+                    cursor: pointer;
+
+                    svg{
+                        pointer-events: none;
+                        path{
+                            fill: var(--font_hover);
+                        }
+                    }
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+    .fillters{
+        width: 35vw;
+        padding: 0 1vw;
+        height: 4vw;
+        background-color: var(--input_color);
+        border-radius: 5px;
+        @include flexProparty(center, space-between, row);
+
+        .filter{
+            width: 15vw;
+            @include flexProparty(center, space-around, row);
+
+            button{
+                border: 0;
+                background-color: transparent;
+                font-size: 1vw;
+                color: var(--font_before_hover);
+                cursor: pointer;
+
+                &:hover{
+                    color: var(--font_hover);
+                }
+            }
+        }
+
+        button{
+            border: 0;
+            background-color: transparent;
+            font-size: 1vw;
+            color: var(--font_before_hover);
+            cursor: pointer;
+
+            &:hover{
+                color: var(--font_hover);
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 560px){
+    .container{
+       background-image: var(--mobile_image);
+
+       header{
+         width: 90vw;
+         margin-top: 10vw;
+
+         h1{
+            font-size: 7vw;
+            letter-spacing: 2vw;
+         }
+
+         button{
+            width: 8vw;
+         }
+       }
+
+       form{
+        width: 90vw;
+        height: 10vw;
+        margin-top: 6vw;
+        padding-left: 3vw;
+
+        .circle{
+            width: 5vw;
+        }
+
+        input{
+            font-size: 5vw;
+        }
+       }
+
+       .todo-container{
+            width: 90vw;
+            margin-top: 10vw;
+
+            .todo-list{
+                .todo{
+                    width: 90vw;
+                    height: 10vw;
+                    padding-right: 4vw;
+
+                    li{
+                        font-size: 4vw;
+                    }
+
+                    .check{
+                        width: 5vw;
+                        height: 5vw;
+                    }
+
+                    .del{
+                        width: 5vw;
+                        height: 5vw; 
+                    }
+                }
+            }
+       }
+
+       .fillters{
+            width: 90vw;
+            height: 10vw;
+            padding-right: 2vw;
+
+            .filter{
+                width: 50vw;
+
+                button{
+                    font-size: 4vw;
+                }
+            }
+
+            button{
+                font-size: 4vw;
+            }
+       }
+    }
+}
